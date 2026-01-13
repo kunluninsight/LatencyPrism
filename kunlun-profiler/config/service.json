@@ -1,0 +1,7 @@
+{
+  "enable_service": false,
+  "service_listen": "0.0.0.0:8080",
+  "auth_token": "secure-kunlun-profiler-token",
+  "kubeconfig": "",
+  "node_id": "your-hostname-will-go-here"
+}

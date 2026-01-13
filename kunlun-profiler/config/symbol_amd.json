@@ -1,0 +1,328 @@
+{
+	"libcudart": [
+        {
+			"name": "hipLaunchKernel",
+			"args": [
+                {
+					"name": "funcoff",
+					"type": "u64",
+					"index": 0
+				},
+				{
+					"name": "gridxy",
+					"type": "u64",
+					"index": 1
+				},
+				{
+					"name": "gridz",
+					"type": "u64",
+					"index": 2
+				},
+				{
+					"name": "blockxy",
+					"type": "u64",
+					"index": 3
+				},
+				{
+					"name": "blockz",
+					"type": "u64",
+					"index": 4
+				},
+				{
+					"name":"sharedMem",
+					"type":"u64",
+					"index":6
+				}
+			]
+		},
+		{
+			"name": "hipMemcpyAsync",
+			"args": [{
+					"name": "dst",
+					"type": "u64",
+					"index": 0
+				},
+				{
+					"name": "src",
+					"type": "u64",
+					"index": 1
+				},
+				{
+					"name": "count",
+					"type": "u64",
+					"index": 2
+				},
+				{
+					"name": "cpykind",
+					"type": "u64",
+					"index": 3
+				},
+				{
+					"name": "stream",
+					"type": "u64",
+					"index": 4
+				}
+			]
+		}
+	],
+	"libnccl": [
+        {
+            "name": "ncclAllReduce",
+            "args": [
+                {
+                    "name": "sendbuff",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": null
+                },
+                {
+                    "name": "recvbuff",
+                    "type": "u64",
+                    "index": 1,
+                    "subMember": null
+                },
+                {
+                    "name": "count",
+                    "type": "u64",
+                    "index": 2,
+                    "subMember": null
+                },
+                {
+                    "name": "datatype",
+                    "type": "u64",
+                    "index": 3,
+                    "subMember": null
+                },
+                {
+                    "name": "op",
+                    "type": "u64",
+                    "index": 4,
+                    "subMember": null
+                },
+                {
+                    "name": "comm",
+                    "type": "u64",
+                    "index": 5,
+                    "subMember": [
+                        {
+                            "name": "commHash",
+                            "type": "u64",
+                            "offset": 55512
+                        },
+                        {
+                            "name": "rank",
+                            "type": "u32",
+                            "offset": 55520
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "ncclAllGather",
+            "args": [
+                {
+                    "name": "sendbuff",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": null
+                },
+                {
+                    "name": "recvbuff",
+                    "type": "u64",
+                    "index": 1,
+                    "subMember": null
+                },
+                {
+                    "name": "count",
+                    "type": "u64",
+                    "index": 2,
+                    "subMember": null
+                },
+                {
+                    "name": "datatype",
+                    "type": "u64",
+                    "index": 3,
+                    "subMember": null
+                },
+                {
+                    "name": "comm",
+                    "type": "u64",
+                    "index": 4,
+                    "subMember": [
+                        {
+                            "name": "commHash",
+                            "type": "u64",
+                            "offset": 55512
+                        },
+                        {
+                            "name": "rank",
+                            "type": "u32",
+                            "offset": 55520
+                        }
+                    ]                
+                },
+                {
+                    "name": "stream",
+                    "type": "u64",
+                    "index": 5,
+                    "subMember": null
+                }
+            ]
+        },
+        {
+            "name": "ncclBroadcast",
+            "args": [
+                {
+                    "name": "comm",
+                    "type": "u64",
+                    "index": 5,
+                    "subMember": [
+                        {
+                            "name": "commHash",
+                            "type": "u64",
+                            "offset": 55512
+                        },
+                        {
+                            "name": "rank",
+                            "type": "u32",
+                            "offset": 55520
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "getChannnelThreadInfo",
+            "args": [
+                {
+                    "name": "ncclInfo",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": [
+                        {
+                            "name": "coll",
+                            "type": "u32",
+                            "offset": 0
+                        },
+                        {
+                            "name": "pattern",
+                            "type": "u32",
+                            "offset": 104
+                        },
+                        {
+                            "name": "algorithm",
+                            "type": "int",
+                            "offset": 1224
+                        },
+                        {
+                            "name": "protocol",
+                            "type": "int",
+                            "offset": 1228
+                        }
+                    ]
+                }
+            ]
+        }
+	],
+	"libmlx5":[
+		{
+            "name": "mlx5_post_send",
+            "args": [
+                {
+                    "name": "qp",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": [
+                        {
+                            "name": "qp_num",
+                            "type": "u32",
+                            "offset": 52
+                        }
+                    ]
+                },
+                {
+                    "name": "wr",
+                    "type": "u64",
+                    "index": 1,
+                    "subMember": [
+                        {
+                            "name": "sg_list",
+                            "type": "u64",
+                            "offset": 16
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "mlx5_poll_cq_v1",
+            "args": [
+                {
+                    "name": "qp",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": [
+                        {
+                            "name": "qp_num",
+                            "type": "u32",
+                            "offset": 52
+                        }
+                    ]
+                },
+                {
+                    "name": "ne",
+                    "type": "int",
+                    "index": 1,
+                    "subMember": null
+                },
+                {
+                    "name": "wc",
+                    "type": "u64",
+                    "index": 2,
+                    "subMember": [
+                        {
+                            "name": "wr_id",
+                            "type": "u64",
+                            "offset": 0
+                        },
+                        {
+                            "name": "status",
+                            "type": "u32",
+                            "offset": 8
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "_ib_modify_qp",
+            "args": [
+                {
+                    "name": "qp",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": [
+                        {
+                            "name": "qp_num",
+                            "type": "u32",
+                            "offset": 176
+                        }
+                    ]
+                },
+                {
+                    "name": "qp_attr",
+                    "type": "u64",
+                    "index": 1,
+                    "subMember": [
+                        {
+                            "name": "dgid",
+                            "type": "u8[16]",
+                            "offset": 72
+                        }
+                    ]
+                }
+            ]
+        }
+	]
+}

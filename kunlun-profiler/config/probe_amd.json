@@ -1,0 +1,197 @@
+{
+    "version": "v0.1.0",
+    "kind": "ProbeConfiguration",
+    "name": "llm",
+    "probes": [
+        {
+            "category": "CAT_XPU",
+            "uprobes": [
+                {
+                    "library": "libamdhip64.so",
+                    "version": "v0.1.0",
+                    "symbols": [
+                        {
+                            "name": "hipStreamSynchronize",
+                            "annotation": {
+                                "type": "mark",
+                                "name": "stream_sync"
+                            }
+                        },
+                        {
+                            "name": "hipMemcpyHtoD"
+                        },
+                        {
+                            "name": "hipMemcpyDtoH"
+                        },
+                        {
+                            "name": "hipMemcpyDtoD"
+                        },
+                        {
+                            "name": "hipMemcpyDtoA"
+                        },
+                        {
+                            "name": "hipMemcpyAtoD"
+                        },
+                        {
+                            "name": "hipMemcpyHtoA"
+                        },
+                        {
+                            "name": "hipMemcpyAtoH"
+                        },
+                        {
+                            "name": "hipMemcpyAtoA"
+                        },
+                        {
+                            "name": "hipMemcpyHtoAAsync"
+                        },
+                        {
+                            "name": "hipMemcpyAtoHAsync"
+                        },
+                        {
+                            "name": "hipMemcpy2D"
+                        },
+                        {
+                            "name": "hipDrvMemcpy2DUnaligned"
+                        },
+                        {
+                            "name": "hipMemcpy3D"
+                        },
+                        {
+                            "name": "hipMemcpyHtoDAsync"
+                        },
+                        {
+                            "name": "hipMemcpyDtoHAsync"
+                        },
+                        {
+                            "name": "hipMemcpyDtoDAsync"
+                        },
+                        {
+                            "name": "hipMemcpy2DAsync"
+                        },
+                        {
+                            "name": "hipMemcpy3DAsync"
+                        },
+                        {
+                            "name": "hipLaunchKernel"
+                        },
+                        {
+                            "name": "hipExtModuleLaunchKernel"
+                        },
+                        {
+                            "name": "hipEventRecord"
+                        },
+                        {
+                            "name": "hipStreamWaitEvent"
+                        },
+                        {
+                            "name": "hipMemcpyAsync"
+                        }
+                    ]
+                },
+                {
+                    "library": "librocblas.so",
+                    "symbols": [
+                        {
+                            "name": "rocblas_gemm_ex"
+                        },
+                        {
+                            "name": "rocblas_gemm_batched_ex"
+                        },
+                        {
+                            "name": "rocblas_gemm_strided_batched_ex"
+                        },
+                        {
+                            "name": "rocblas_sgemm"
+                        },
+                        {
+                            "name": "rocblas_cgemm"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "category": "CAT_NET",
+            "uprobes": [
+                {
+                    "library": "librccl.so",
+                    "symbols": [
+                        {
+                            "name": "ncclGroupStart"
+                        },
+                        {
+                            "name": "ncclGroupEnd"
+                        },
+                        {
+                            "name": "ncclCommInitRank"
+                        },
+                        {
+                            "name": "ncclCommInitAll"
+                        },
+                        {
+                            "name": "ncclCommFinalize"
+                        },
+                        {
+                            "name": "ncclCommDestroy"
+                        },
+                        {
+                            "name": "ncclAllReduce"
+                        },
+                        {
+                            "name": "ncclAllGather"
+                        },
+                        {
+                            "name": "ncclBroadcast"
+                        },
+                        {
+                            "name": "ncclSend"
+                        },
+                        {
+                            "name": "ncclRecv"
+                        },
+                        {
+                            "name": "_ZL21getChannnelThreadInfoP8ncclInfo"
+                        }
+                    ]
+                },
+                {
+                    "library": "libtorch_hip.so",
+                    "symbols": [
+                        {
+                            "name": "_ZN5torch4cuda4nccl4recvERN2at6TensorEPvN3c103hip27HIPStreamMasqueradingAsCUDAEi"
+                        },
+                        {
+                            "name": "_ZN5torch4cuda4nccl4sendERKN2at6TensorEPvN3c103hip27HIPStreamMasqueradingAsCUDAEi"
+                        },
+                        {
+                            "name": "_ZN4c10d16ProcessGroupNCCL8WorkNCCL17synchronizeStreamEv"
+                        },
+                        {
+                            "name": "_ZN5torch4cuda4nccl7all2allERSt6vectorIN2at6TensorESaIS4_EES7_PvRN3c103hip27HIPStreamMasqueradingAsCUDAE"
+                        },
+                        {
+                            "name": "_ZN5torch4cuda4nccl7scatterERKSt6vectorIN2at6TensorESaIS4_EERS4_PvRN3c103hip27HIPStreamMasqueradingAsCUDAEi"
+                        }
+                    ]
+                },
+                {
+                    "library": "libmlx5",
+                    "symbols": [
+                        {
+                            "name": "mlx5_post_send"
+                        },
+                        {
+                            "name": "mlx5_poll_cq_v1"
+                        }
+                    ]
+                }
+            ],
+            "kprobes": [
+                {
+                    "name": "_ib_modify_qp",
+                    "filterfunc": "u64 attr_mask = PT_REGS_PARM3(ctx);\\n    if (!(attr_mask & (1 << 7)))\\n    return 0;"
+                }
+            ]
+        }
+    ]
+}

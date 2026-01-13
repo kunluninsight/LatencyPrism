@@ -1,0 +1,129 @@
+[
+    {
+        "usage": "filter model config attributes",
+        "keys":[],
+        "values": []
+    },
+    {
+        "usage": "tested on sglang 0.4.10 and 0.5.2",
+        "func":"run_batch",
+        "class":"Scheduler",
+        "module":"sglang.srt.managers.scheduler",
+        "arguments":[
+            {
+                "name":"batch",
+                "attributes":[
+                    ["batch_size"],
+                    ["reqs", "__str__"]
+                ]
+            }
+        ],
+        "isCollectMore":1
+    },
+    {
+        "usage": "tested on sglang 0.4.10 and 0.5.2",
+        "func":"process_batch_result",
+        "class":"Scheduler",
+        "module":"sglang.srt.managers.scheduler",
+        "arguments":[
+            {
+                "name":"batch",
+                "attributes":[
+                    ["model_config", "hf_config", "to_dict"]                
+                ]
+            }
+        ],
+        "isCollectMore":0
+    },
+    {
+        "usage": "tested on sglang 0.4.10 and 0.5.2",
+        "module": "sglang.srt.utils",
+        "func": "require_mlp_sync",
+        "arguments": [
+            {
+                "name": "server_args",
+                "attributes": [
+                    ["__dict__"]
+                ]
+            }
+        ],
+	"isCollectMore":0
+    },
+    {
+        "usage": "tested on vllm 0.7.2",
+        "module": "vllm.worker.model_runner",
+        "class": "ModelRunner",
+        "func": "execute_model",
+        "arguments": [
+            {
+                "name": "self",
+                "attributes": [
+                    ["model_config", "hf_config", "to_dict"]
+                ]
+            }
+        ],
+        "isCollectMore":0
+    },
+    {
+        "usage": "tested on vllm 0.7.2 and 0.11.0",
+        "module": "vllm.config",
+        "class": "VllmConfig",
+        "func": "pad_for_cudagraph",
+        "arguments": [
+            {
+                "name": "self",
+                "attributes": [
+                    ["__str__"],
+                    ["model_config", "hf_config", "to_dict"]
+                ]
+            }
+        ],
+        "isCollectMore": 0
+    },
+    {
+        "usage": "tested on vllm 0.7.2",
+        "module": "vllm.core.scheduler",
+        "class": "SchedulerOutputs",
+        "func": "is_empty",
+        "arguments": [
+            {
+                "name": "self",
+                "attributes": [
+                    ["scheduled_seq_groups",  "__str__"]
+                ]
+            }
+        ],
+        "isCollectMore":1
+    },
+    {
+        "usage": "tested on vllm 0.7.2",
+        "module": "vllm.core.block_manager",
+        "class": "SelfAttnBlockSpaceManager",
+        "func": "can_append_slots",
+        "arguments": [
+            {
+                "name": "seq_group",
+                "attributes": [
+                    ["request_id"],
+                    ["prompt_token_ids", "__str__"]
+                ]
+            }
+        ],
+        "isCollectMore": 1
+    },
+    {
+        "usage": "tested on vllm 0.10.0",
+        "module": "vllm.v1.worker.gpu_model_runner",
+        "class": "GPUModelRunner",
+        "func": "execute_model",
+        "arguments": [
+            {
+                "name": "self",
+                "attributes": [
+                    ["requests"]
+                ]
+            }
+        ],
+        "isCollectMore":1
+    }
+]

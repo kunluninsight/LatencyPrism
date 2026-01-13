@@ -1,0 +1,876 @@
+{
+	"libcudart": [
+        {
+			"name": "cudaLaunchKernel",
+			"args": [
+                {
+					"name": "funcoff",
+					"type": "u64",
+					"index": 0
+				},
+				{
+					"name": "gridxy",
+					"type": "u64",
+					"index": 1
+				},
+				{
+					"name": "gridz",
+					"type": "u64",
+					"index": 2
+				},
+				{
+					"name": "blockxy",
+					"type": "u64",
+					"index": 3
+				},
+				{
+					"name": "blockz",
+					"type": "u64",
+					"index": 4
+				},
+				{
+					"name":"sharedMem",
+					"type":"u64",
+					"index":6
+				}
+			]
+		},
+		{
+			"name": "cudaMemcpyAsync",
+			"args": [{
+					"name": "dst",
+					"type": "u64",
+					"index": 0
+				},
+				{
+					"name": "src",
+					"type": "u64",
+					"index": 1
+				},
+				{
+					"name": "count",
+					"type": "u64",
+					"index": 2
+				},
+				{
+					"name": "kind",
+					"type": "u64",
+					"index": 3
+				},
+				{
+					"name": "stream",
+					"type": "u64",
+					"index": 4
+				}
+			]
+		},
+		{
+			"name": "cudaMemset",
+			"args": [
+                {
+					"name": "devPtr",
+					"type": "u64",
+					"index": 0
+				},
+				{
+					"name": "value",
+					"type": "u64",
+					"index": 1
+				},
+				{
+					"name": "count",
+					"type": "u64",
+					"index": 2
+				}
+			]
+		}
+	],
+	"libnccl": [
+        {
+            "name": "ncclAllReduce",
+            "args": [
+                {
+                    "name": "sendbuff",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": null
+                },
+                {
+                    "name": "recvbuff",
+                    "type": "u64",
+                    "index": 1,
+                    "subMember": null
+                },
+                {
+                    "name": "count",
+                    "type": "u64",
+                    "index": 2,
+                    "subMember": null
+                },
+                {
+                    "name": "datatype",
+                    "type": "u64",
+                    "index": 3,
+                    "subMember": null
+                },
+                {
+                    "name": "op",
+                    "type": "u64",
+                    "index": 4,
+                    "subMember": null
+                },
+                {
+                    "name": "comm",
+                    "type": "u64",
+                    "index": 5,
+                    "subMember": [
+                        {
+                            "name": "commHash",
+                            "type": "u64",
+                            "offset": 10448
+                        },
+                        {
+                            "name": "rank",
+                            "type": "u32",
+                            "offset": 10456
+                        },
+                        {
+                            "name": "nRanks",
+                            "type": "u32",
+                            "offset": 10460
+                        },
+                        {
+                            "name": "cudaDev",
+                            "type":"u32",
+                            "offset": 10464
+                        },
+                        {
+                            "name":"node",
+                            "type":"u32",
+                            "offset":10628
+                        },
+                        {
+                            "name":"nNodes",
+                            "type":"u32",
+                            "offset":10632
+                        },
+                        {
+                            "name":"localRank",
+                            "type":"u32",
+                            "offset":10636
+                        },
+                        {
+                            "name":"localRanks",
+                            "type":"u32",
+                            "offset":10640
+                        },
+                        {
+                            "name":"rp",
+                            "type":"u32",
+                            "offset": 168
+                        },
+                        {
+                            "name":"rn",
+                            "type":"u32",
+                            "offset":172
+                        },
+                        {
+                            "name":"ri",
+                            "type":"u32",
+                            "offset":184
+                        },
+                        {
+                            "name":"td",
+                            "type":"u32",
+                            "offset":200
+                        },
+                        {
+                            "name":"tu",
+                            "type":"u32",
+                            "offset":204
+                        },
+                        {
+                            "name":"td0",
+                            "type":"u32",
+                            "offset":208
+                        },
+                        {
+                            "name":"td1",
+                            "type":"u32",
+                            "offset":212
+                        },
+                        {
+                            "name":"td2",
+                            "type":"u32",
+                            "offset":216
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "ncclAllGather",
+            "args": [
+                {
+                    "name": "sendbuff",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": null
+                },
+                {
+                    "name": "recvbuff",
+                    "type": "u64",
+                    "index": 1,
+                    "subMember": null
+                },
+                {
+                    "name": "count",
+                    "type": "u64",
+                    "index": 2,
+                    "subMember": null
+                },
+                {
+                    "name": "datatype",
+                    "type": "u64",
+                    "index": 3,
+                    "subMember": null
+                },
+                {
+                    "name": "comm",
+                    "type": "u64",
+                    "index": 4,
+                    "subMember": [
+                        {
+                            "name": "commHash",
+                            "type": "u64",
+                            "offset": 10448
+                        },
+                        {
+                            "name": "rank",
+                            "type": "u32",
+                            "offset": 10456
+                        },
+                        {
+                            "name": "nRanks",
+                            "type": "u32",
+                            "offset": 10460
+                        },
+                        {
+                            "name": "cudaDev",
+                            "type":"u32",
+                            "offset": 10464
+                        },
+                        {
+                            "name":"node",
+                            "type":"u32",
+                            "offset":10628
+                        },
+                        {
+                            "name":"nNodes",
+                            "type":"u32",
+                            "offset":10632
+                        },
+                        {
+                            "name":"localRank",
+                            "type":"u32",
+                            "offset":10636
+                        },
+                        {
+                            "name":"localRanks",
+                            "type":"u32",
+                            "offset":10640
+                        },
+                        {
+                            "name":"rp",
+                            "type":"u32",
+                            "offset": 168
+                        },
+                        {
+                            "name":"rn",
+                            "type":"u32",
+                            "offset":172
+                        },
+                        {
+                            "name":"ri",
+                            "type":"u32",
+                            "offset":184
+                        },
+                        {
+                            "name":"td",
+                            "type":"u32",
+                            "offset":200
+                        },
+                        {
+                            "name":"tu",
+                            "type":"u32",
+                            "offset":204
+                        },
+                        {
+                            "name":"td0",
+                            "type":"u32",
+                            "offset":208
+                        },
+                        {
+                            "name":"td1",
+                            "type":"u32",
+                            "offset":212
+                        },
+                        {
+                            "name":"td2",
+                            "type":"u32",
+                            "offset":216
+                        }
+                    ]            
+                },
+                {
+                    "name": "stream",
+                    "type": "u64",
+                    "index": 5,
+                    "subMember": null
+                }
+            ]
+        },
+        {
+            "name": "ncclBroadcast",
+            "args": [
+                {
+                    "name": "count",
+                    "type": "u64",
+                    "index": 2,
+                    "subMember": null
+                },
+                {
+                    "name": "datatype",
+                    "type": "u64",
+                    "index": 3,
+                    "subMember": null
+                },
+                {
+                    "name": "comm",
+                    "type": "u64",
+                    "index": 5,
+                    "subMember": [
+                        {
+                            "name": "commHash",
+                            "type": "u64",
+                            "offset": 10448
+                        },
+                        {
+                            "name": "rank",
+                            "type": "u32",
+                            "offset": 10456
+                        },
+                        {
+                            "name": "nRanks",
+                            "type": "u32",
+                            "offset": 10460
+                        },
+                        {
+                            "name": "cudaDev",
+                            "type":"u32",
+                            "offset": 10464
+                        },
+                        {
+                            "name":"node",
+                            "type":"u32",
+                            "offset":10628
+                        },
+                        {
+                            "name":"nNodes",
+                            "type":"u32",
+                            "offset":10632
+                        },
+                        {
+                            "name":"localRank",
+                            "type":"u32",
+                            "offset":10636
+                        },
+                        {
+                            "name":"localRanks",
+                            "type":"u32",
+                            "offset":10640
+                        },
+                        {
+                            "name":"rp",
+                            "type":"u32",
+                            "offset": 168
+                        },
+                        {
+                            "name":"rn",
+                            "type":"u32",
+                            "offset":172
+                        },
+                        {
+                            "name":"ri",
+                            "type":"u32",
+                            "offset":184
+                        },
+                        {
+                            "name":"td",
+                            "type":"u32",
+                            "offset":200
+                        },
+                        {
+                            "name":"tu",
+                            "type":"u32",
+                            "offset":204
+                        },
+                        {
+                            "name":"td0",
+                            "type":"u32",
+                            "offset":208
+                        },
+                        {
+                            "name":"td1",
+                            "type":"u32",
+                            "offset":212
+                        },
+                        {
+                            "name":"td2",
+                            "type":"u32",
+                            "offset":216
+                        }
+                    ]
+                }
+            ]
+        },
+		{
+			"name": "pncclBroadcast",
+			"args": [
+                {
+                    "name": "comm",
+                    "type": "u64",
+                    "index": 5,
+                    "subMember": [
+                        {
+                            "name": "commHash",
+                            "type": "u64",
+                            "offset": 10448
+                        },
+                        {
+                            "name": "rank",
+                            "type": "u32",
+                            "offset": 10456
+                        },
+                        {
+                            "name": "nRanks",
+                            "type": "u32",
+                            "offset": 10460
+                        },
+                        {
+                            "name": "cudaDev",
+                            "type":"u32",
+                            "offset": 10464
+                        },
+                        {
+                            "name":"node",
+                            "type":"u32",
+                            "offset":10628
+                        },
+                        {
+                            "name":"nNodes",
+                            "type":"u32",
+                            "offset":10632
+                        },
+                        {
+                            "name":"localRank",
+                            "type":"u32",
+                            "offset":10636
+                        },
+                        {
+                            "name":"localRanks",
+                            "type":"u32",
+                            "offset":10640
+                        },
+                        {
+                            "name":"rp",
+                            "type":"u32",
+                            "offset": 168
+                        },
+                        {
+                            "name":"rn",
+                            "type":"u32",
+                            "offset":172
+                        },
+                        {
+                            "name":"ri",
+                            "type":"u32",
+                            "offset":184
+                        },
+                        {
+                            "name":"td",
+                            "type":"u32",
+                            "offset":200
+                        },
+                        {
+                            "name":"tu",
+                            "type":"u32",
+                            "offset":204
+                        },
+                        {
+                            "name":"td0",
+                            "type":"u32",
+                            "offset":208
+                        },
+                        {
+                            "name":"td1",
+                            "type":"u32",
+                            "offset":212
+                        },
+                        {
+                            "name":"td2",
+                            "type":"u32",
+                            "offset":216
+                        }
+                    ]
+			    }
+            ]
+		},
+        {
+            "name": "getChannnelThreadInfo",
+            "args": [
+                {
+                    "name": "ncclInfo",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": [
+                        {
+                            "name": "coll",
+                            "type": "u32",
+                            "offset": 0
+                        },
+                        {
+                            "name": "pattern",
+                            "type": "u32",
+                            "offset": 104
+                        },
+                        {
+                            "name": "algorithm",
+                            "type": "int",
+                            "offset": 1208
+                        },
+                        {
+                            "name": "protocol",
+                            "type": "int",
+                            "offset": 1212
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "ncclSend",
+            "args": [
+                {
+                    "name":"count",
+                    "type":"u64",
+                    "index": 1
+                },
+                {
+                    "name":"datatype",
+                    "type":"u64",
+                    "index":2
+                },
+                {
+                    "name":"peer",
+                    "type":"u32",
+                    "index":3
+                },
+                {
+                    "name":"comm",
+                    "type":"u64",
+                    "index":4,
+                    "subMember": [
+                        {
+                            "name": "commHash",
+                            "type": "u64",
+                            "offset": 10448
+                        },
+                        {
+                            "name": "rank",
+                            "type": "u32",
+                            "offset": 10456
+                        },
+                        {
+                            "name": "nRanks",
+                            "type": "u32",
+                            "offset": 10460
+                        },
+                        {
+                            "name": "cudaDev",
+                            "type":"u32",
+                            "offset": 10464
+                        },
+                        {
+                            "name":"node",
+                            "type":"u32",
+                            "offset":10628
+                        },
+                        {
+                            "name":"nNodes",
+                            "type":"u32",
+                            "offset":10632
+                        },
+                        {
+                            "name":"localRank",
+                            "type":"u32",
+                            "offset":10636
+                        },
+                        {
+                            "name":"localRanks",
+                            "type":"u32",
+                            "offset":10640
+                        },
+                        {
+                            "name":"rp",
+                            "type":"u32",
+                            "offset": 168
+                        },
+                        {
+                            "name":"rn",
+                            "type":"u32",
+                            "offset":172
+                        },
+                        {
+                            "name":"ri",
+                            "type":"u32",
+                            "offset":184
+                        },
+                        {
+                            "name":"td",
+                            "type":"u32",
+                            "offset":200
+                        },
+                        {
+                            "name":"tu",
+                            "type":"u32",
+                            "offset":204
+                        },
+                        {
+                            "name":"td0",
+                            "type":"u32",
+                            "offset":208
+                        },
+                        {
+                            "name":"td1",
+                            "type":"u32",
+                            "offset":212
+                        },
+                        {
+                            "name":"td2",
+                            "type":"u32",
+                            "offset":216
+                        }
+                    ]                    
+                }
+            ]
+        },
+        {
+            "name": "ncclRecv",
+            "args": [
+                {
+                    "name":"count",
+                    "type":"u64",
+                    "index": 1
+                },
+                {
+                    "name":"datatype",
+                    "type":"u64",
+                    "index":2
+                },
+                {
+                    "name":"peer",
+                    "type":"u32",
+                    "index":3
+                },
+                {
+                    "name":"comm",
+                    "type":"u64",
+                    "index":4,
+                    "subMember": [
+                        {
+                            "name": "commHash",
+                            "type": "u64",
+                            "offset": 10448
+                        },
+                        {
+                            "name": "rank",
+                            "type": "u32",
+                            "offset": 10456
+                        },
+                        {
+                            "name": "nRanks",
+                            "type": "u32",
+                            "offset": 10460
+                        },
+                        {
+                            "name": "cudaDev",
+                            "type":"u32",
+                            "offset": 10464
+                        },
+                        {
+                            "name":"node",
+                            "type":"u32",
+                            "offset":10628
+                        },
+                        {
+                            "name":"nNodes",
+                            "type":"u32",
+                            "offset":10632
+                        },
+                        {
+                            "name":"localRank",
+                            "type":"u32",
+                            "offset":10636
+                        },
+                        {
+                            "name":"localRanks",
+                            "type":"u32",
+                            "offset":10640
+                        },
+                        {
+                            "name":"rp",
+                            "type":"u32",
+                            "offset": 168
+                        },
+                        {
+                            "name":"rn",
+                            "type":"u32",
+                            "offset":172
+                        },
+                        {
+                            "name":"ri",
+                            "type":"u32",
+                            "offset":184
+                        },
+                        {
+                            "name":"td",
+                            "type":"u32",
+                            "offset":200
+                        },
+                        {
+                            "name":"tu",
+                            "type":"u32",
+                            "offset":204
+                        },
+                        {
+                            "name":"td0",
+                            "type":"u32",
+                            "offset":208
+                        },
+                        {
+                            "name":"td1",
+                            "type":"u32",
+                            "offset":212
+                        },
+                        {
+                            "name":"td2",
+                            "type":"u32",
+                            "offset":216
+                        }
+                    ]                    
+                }
+            ]
+        }
+	],
+	"libmlx5":[
+		{
+            "name": "mlx5_post_send",
+            "args": [
+                {
+                    "name": "qp",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": [
+                        {
+                            "name": "qp_num",
+                            "type": "u32",
+                            "offset": 52
+                        }
+                    ]
+                },
+                {
+                    "name": "wr",
+                    "type": "u64",
+                    "index": 1,
+                    "subMember": [
+                        {
+                            "name": "sg_list",
+                            "type": "u64",
+                            "offset": 16
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "mlx5_poll_cq_v1",
+            "args": [
+                {
+                    "name": "qp",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": [
+                        {
+                            "name": "qp_num",
+                            "type": "u32",
+                            "offset": 52
+                        }
+                    ]
+                },
+                {
+                    "name": "ne",
+                    "type": "int",
+                    "index": 1,
+                    "subMember": null
+                },
+                {
+                    "name": "wc",
+                    "type": "u64",
+                    "index": 2,
+                    "subMember": [
+                        {
+                            "name": "wr_id",
+                            "type": "u64",
+                            "offset": 0
+                        },
+                        {
+                            "name": "status",
+                            "type": "u32",
+                            "offset": 8
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "_ib_modify_qp",
+            "args": [
+                {
+                    "name": "qp",
+                    "type": "u64",
+                    "index": 0,
+                    "subMember": [
+                        {
+                            "name": "qp_num",
+                            "type": "u32",
+                            "offset": 176
+                        }
+                    ]
+                },
+                {
+                    "name": "qp_attr",
+                    "type": "u64",
+                    "index": 1,
+                    "subMember": [
+                        {
+                            "name": "dgid",
+                            "type": "u8[16]",
+                            "offset": 72
+                        }
+                    ]
+                }
+            ]
+        }
+	]
+}

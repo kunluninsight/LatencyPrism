@@ -1,0 +1,209 @@
+{
+    "version": "v0.1.0",
+    "kind": "ProbeConfiguration",
+    "name": "llm",
+    "probes": [
+        {
+            "category": "CAT_XPU",
+            "uprobes": [
+                {
+                    "library": "libcuda.so",
+                    "version": "v0.1.0",
+                    "symbols": [
+                        {
+                            "name": "cuStreamSynchronize"
+                        },
+                        {
+                            "name": "cuMemcpyHtoD_v2"
+                        },
+                        {
+                            "name": "cuMemcpyDtoH_v2"
+                        },
+                        {
+                            "name": "cuMemcpyDtoD_v2"
+                        },
+                        {
+                            "name": "cuMemcpyDtoA_v2"
+                        },
+                        {
+                            "name": "cuMemcpyAtoD_v2"
+                        },
+                        {
+                            "name": "cuMemcpyHtoA_v2"
+                        },
+                        {
+                            "name": "cuMemcpyAtoH_v2"
+                        },
+                        {
+                            "name": "cuMemcpyAtoA_v2"
+                        },
+                        {
+                            "name": "cuMemcpyHtoAAsync_v2"
+                        },
+                        {
+                            "name": "cuMemcpyAtoHAsync_v2"
+                        },
+                        {
+                            "name": "cuMemcpy2D_v2"
+                        },
+                        {
+                            "name": "cuMemcpy2DUnaligned_v2"
+                        },
+                        {
+                            "name": "cuMemcpy3D_v2"
+                        },
+                        {
+                            "name": "cuMemcpyHtoDAsync_v2"
+                        },
+                        {
+                            "name": "cuMemcpyDtoHAsync_v2"
+                        },
+                        {
+                            "name": "cuMemcpyDtoDAsync_v2"
+                        },
+                        {
+                            "name": "cuMemcpy2DAsync_v2"
+                        },
+                        {
+                            "name": "cuMemcpy3DAsync_v2"
+                        },
+                        {
+                            "name": "cuLaunchKernel"
+                        },
+                        {
+                            "name": "cuLaunchKernelEx"
+                        }
+                    ]
+                },
+                {
+                    "library": "libcudart.so",
+                    "symbols": [
+                        {
+                            "name": "cudaLaunchKernel"
+                        },
+                        {
+                            "name": "cudaEventRecord"
+                        },
+                        {
+                            "name": "cudaStreamWaitEvent"
+                        }
+                    ]
+                },
+                {
+                    "library": "libcublas",
+                    "symbols": [
+                        {
+                            "name": "cublasGemmEx"
+                        },
+                        {
+                            "name": "cublasGemmBatchedEx"
+                        },
+                        {
+                            "name": "cublasGemmStridedBatchedEx"
+                        },
+                        {
+                            "name": "cublasSgemmEx"
+                        },
+                        {
+                            "name": "cublasCgemmEx"
+                        }
+                    ]
+                },
+                {
+                    "library": "libcublasLt",
+                    "symbols": [
+                        {
+                            "name": "cublasLtMatmul"
+                        },
+                        {
+                            "name": "cublasLtMatrixTransform"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "category": "CAT_NET",
+            "uprobes": [
+                {
+                    "library": "libnccl.so",
+                    "symbols": [
+                        {
+                            "name": "pncclGroupStart"
+                        },
+                        {
+                            "name": "pncclGroupEnd"
+                        },
+                        {
+                            "name": "pncclCommInitRank"
+                        },
+                        {
+                            "name": "pncclCommInitAll"
+                        },
+                        {
+                            "name": "pncclCommFinalize"
+                        },
+                        {
+                            "name": "pncclCommDestroy"
+                        },
+                        {
+                            "name": "ncclAllReduce"
+                        },
+                        {
+                            "name": "ncclAllGather"
+                        },
+                        {
+                            "name": "ncclBroadcast"
+                        },
+                        {
+                            "name": "ncclSend"
+                        },
+                        {
+                            "name": "ncclRecv"
+                        },
+                        {
+                            "name": "getChannnelThreadInfo"
+                        }
+                    ]
+                },
+                {
+                    "library": "libtorch_cuda.so",
+                    "symbols": [
+                        {
+                            "name": "_ZN5torch4cuda4nccl4recvERN2at6TensorEPvN3c104cuda10CUDAStreamEi"
+                        },
+                        {
+                            "name": "_ZN5torch4cuda4nccl4sendERKN2at6TensorEPvN3c104cuda10CUDAStreamEi"
+                        },
+                        {
+                            "name": "_ZN4c10d16ProcessGroupNCCL8WorkNCCL17synchronizeStreamEv"
+                        },
+                        {
+                            "name": "_ZN5torch4cuda4nccl7all2allERSt6vectorIN2at6TensorESaIS4_EES7_PvRN3c104cuda10CUDAStreamE"
+                        },
+                        {
+                            "name": "_ZN5torch4cuda4nccl7scatterERKSt6vectorIN2at6TensorESaIS4_EERS4_PvRN3c104cuda10CUDAStreamEi"
+                        }
+                    ]
+                },
+                {
+                    "library": "libmlx5",
+                    "symbols": [
+                        {
+                            "name": "mlx5_post_send"
+                        },
+                        {
+                            "name": "mlx5_poll_cq_v1"
+                        }
+                    ]
+                }
+            ],
+            "kprobes": [
+                {
+                    "name": "_ib_modify_qp",
+                    "filterfunc": "u64 attr_mask = PT_REGS_PARM3(ctx);\\n    if (!(attr_mask & (1 << 7)))\\n    return 0;"
+                }
+            ]
+        }
+    ]
+}

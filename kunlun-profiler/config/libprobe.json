@@ -1,0 +1,5 @@
+[
+    "libnccl.so",
+    "libcudart.so",
+    "libmlx5.so"
+]
