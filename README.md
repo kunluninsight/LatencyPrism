@@ -40,7 +40,7 @@ Please be aware of the following regarding the repository's contents:
 
 Decompression of kunlun-profiler: Due to file size constraints, the kunlun-profiler binary has been compressed using gzip. Before execution, please decompress it with the appropriate command (e.g., gzip -d kunlun-profiler/kunlun-profiler.gz).
 
-Full Dataset Access: The full raw dataset exceeds GitHub's storage limits and is therefore not included in this repository. We are in the process of archiving it on Zenodo. This document will be updated with a persistent link and DOI as soon as it becomes available.
+Full Dataset Access: The full raw dataset exceeds GitHub's storage limits and is therefore not included in this repository. We have archived it on [Zenodo](https://zenodo.org/records/18227620). Please download the archive from Zenodo and extract it to the respective folders to restore the file structure.
 
 ## Anomaly Injection Scenarios
 
