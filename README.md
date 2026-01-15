@@ -1,6 +1,6 @@
 # LatencyPrism: Online Non-intrusive Latency Sculpting for SLO-Guaranteed LLM Inference
 
-This repository contains the core analytical components for our paper, submitted as a public artifact for academic verification.
+This repository contains the core analytical components for our paper **"LatencyPrism: Online Non-intrusive Latency Sculpting for SLO-Guaranteed LLM Inference"**, available on [arXiv:2601.09258](https://arxiv.org/abs/2601.09258). This repository serves as a public artifact for academic verification.
 
 ## Confidentiality Notice
 
